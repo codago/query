@@ -9,8 +9,10 @@ SELECT mahasiswa.nama , matakuliah.nama AS matakuliah ,kontrak.nilai FROM  mahas
 WHERE kontrak.nim = mahasiswa.nim AND matakuliah.idmatakuliah = kontrak.idmatakuliah AND kontrak.nilai <= 'B';
 
 --4
-SELECT mahasiswa.nama ,kontrak.idkontrak , matakuliah.sks FROM mahasiswa, kontrak ,matakuliah
-WHERE kontrak.nim = mahasiswa.nim AND matakuliah.idmatakuliah = kontrak.idmatakuliah AND matakuliah.sks > 10;
+SELECT mahasiswa.nim, mahasiswa.nama,SUM(matakuliah.sks) AS total_sks
+FROM kontrak, mahasiswa, matakuliah
+WHERE kontrak.nim = mahasiswa.nim AND kontrak.idmatakuliah= matakuliah.idmatakuliah
+GROUP BY mahasiswa.nim HAVING total_sks > 10;
 
 --5
 SELECT mahasiswa.nama ,kontrak.idkontrak , matakuliah.nama AS matakuliah FROM mahasiswa, kontrak ,matakuliah
