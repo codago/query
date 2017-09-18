@@ -32,6 +32,7 @@ select iddosen, namadosen, count(nim) from(select distinct dosen.iddosen, dosen.
   order by umur
 
   --nomer 8
+  --ok
   select  mahasiswa.nama, jurusan.namajurusan, matakuliah.namamk as matakuliah,  dosen.namadosen as dosen, kontrak.nilai from mahasiswa, kontrak, matakuliah, dosen, jurusan
   where kontrak.nim=mahasiswa.nim and
   matakuliah.idmk = kontrak.idmk and
